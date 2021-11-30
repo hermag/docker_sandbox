@@ -1,0 +1,24 @@
+version: '3'
+services:
+  webserver:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8282:80"
+    volumes:
+      - ./websites:/usr/share/nginx/html
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=alskdjalskdja
+    restart: always
+    ports:
+      - "33060:3306"
+    volumes:
+      - db_vol:/var/lib/mysql
+
+volumes:
+  db_vol:
+
+networks:
+  devops-training:
